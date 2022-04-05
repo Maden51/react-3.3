@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import MessageHistory from './components/MessageHistory';
+import { messages } from './data';
 
 function App() {
+  const data = messages;
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="clearfix container">
+      <div className="chat">
+        <div className="chat-history">
+          <ul>
+            {data.map((message) => (<MessageHistory key={message.id} list={message} />))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
